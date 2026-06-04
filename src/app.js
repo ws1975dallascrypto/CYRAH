@@ -1,6 +1,7 @@
 'use strict';
 
 require('dotenv').config();
+const path    = require('path');
 const express = require('express');
 
 const servicesRouter     = require('./routes/services');
@@ -11,6 +12,7 @@ const paymentsRouter     = require('./routes/payments');
 
 const app = express();
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use('/api/services',      servicesRouter);
 app.use('/api/pickup-types',  pickupTypesRouter);
