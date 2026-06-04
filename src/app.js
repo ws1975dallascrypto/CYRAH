@@ -3,9 +3,11 @@
 require('dotenv').config();
 const express = require('express');
 
-const servicesRouter   = require('./routes/services');
-const pickupTypesRouter = require('./routes/pickupTypes');
-const ordersRouter     = require('./routes/orders');
+const servicesRouter     = require('./routes/services');
+const pickupTypesRouter  = require('./routes/pickupTypes');
+const ordersRouter       = require('./routes/orders');
+const orderEventsRouter  = require('./routes/orderEvents');
+const paymentsRouter     = require('./routes/payments');
 
 const app = express();
 app.use(express.json());
@@ -13,6 +15,8 @@ app.use(express.json());
 app.use('/api/services',      servicesRouter);
 app.use('/api/pickup-types',  pickupTypesRouter);
 app.use('/api/orders',        ordersRouter);
+app.use('/api/orders',        orderEventsRouter);
+app.use('/api/orders',        paymentsRouter);
 
 // Central error handler
 app.use((err, req, res, next) => {
